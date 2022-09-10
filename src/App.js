@@ -3,7 +3,7 @@ import "./App.css";
 import "antd/dist/antd.css";
 import { Table } from "antd";
 import ResizableTitle from "./components/ResizableTitle";
-import { calculateTime } from "./utils/utils";
+import { calculateTime, daysCount } from "./utils/utils";
 import Search from "./components/Search";
 import { initialColumns } from "./utils/initialColumns";
 
@@ -42,6 +42,12 @@ const App = () => {
     });
 
     obj.monthly = `${Math.floor(monthTotal / 60)}:${monthTotal % 60}`;
+    [...new Array(daysCount)].forEach((day, index) => {
+      console.log(obj[index + 1]);
+      if (obj[index + 1] === undefined) {
+        obj[index + 1] = 0;
+      }
+    });
     return obj;
   });
 
